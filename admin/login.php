@@ -5,10 +5,10 @@ $al = new AdminLogin();
 
 if(isset($_POST['adminLogin'])){ 
    $adminUser = ($_POST['adminUser']);
-   $adminPass = ($_POST['adminPass']);
-   $hashed_password = password_hash($adminPass, PASSWORD_DEFAULT);
-  
-   $loginCheck = $al->adminLogin($adminUser, $adminPass, $hashed_password);
+   $adminPass = md5($_POST['adminPass']);
+   
+   //Checking adminLogin with adminLogin function
+   $loginCheck = $al->adminLogin($adminUser, $adminPass);
 }
 ?>
 
@@ -17,6 +17,7 @@ if(isset($_POST['adminLogin'])){
 <head>
 <meta charset="utf-8">
 <title>Admin Login</title>
+
 <link rel="stylesheet" type="text/css" href="css/stylelogin.css" media="screen" />
 </head>
 <body>
@@ -24,11 +25,18 @@ if(isset($_POST['adminLogin'])){
 <section id="content">
 	<form action="" method="post">
 		<h1>Admin Login</h1>
+	<span style='color:red; font-size:17px; font-weight:bold'>
+	<?php
+	if(isset($loginCheck)){
+		echo $loginCheck;
+	}
+	?>
+</span>
 		<div>
-			<input type="text" placeholder="Username" required="" name="adminUser"/>
+			<input type="text" placeholder="Username"  name="adminUser"/>
 		</div>
 		<div>
-			<input type="password" placeholder="Password" required="" name="adminPass"/>
+			<input type="password" placeholder="Password"  name="adminPass"/>
 		</div>
 		<div>
 			<input type="submit" value="Log in" name="adminLogin"/>
