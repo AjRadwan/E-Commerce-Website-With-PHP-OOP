@@ -5,7 +5,6 @@ include '../lib/Session.php';
 
 Session::CheckLogin();
 
-
 class AdminLogin{
     private $db;
     private $fm;
@@ -41,7 +40,6 @@ class AdminLogin{
             return $loginMsg;
         }
     }
-
 }
 }
 
