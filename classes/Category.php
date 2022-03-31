@@ -31,5 +31,12 @@
          }
      }
     }
+
+
+    public function getAllCategory(){
+        $query = "SELECT * FROM tbl_category ORDER BY catId DESC";
+        $result = $this->db->select($query);
+        return $result;
+    }
  }
 ?>
