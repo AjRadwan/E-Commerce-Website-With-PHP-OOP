@@ -26,8 +26,7 @@
              return $message;
          }else{
             $message = "<span class='success'>Something went wrong</span>";
-            return $message;
-           
+            return $message;   
          }
      }
     }
@@ -45,5 +44,29 @@
        $result = $this->db->select($query);
        return $result;
     }
+
+
+    public function UpdateCategory($catName, $catid){
+        $catName = $this->fm->validation($catName);
+        $catName = mysqli_real_escape_string($this->db->link, $catName);
+        $catid = mysqli_real_escape_string($this->db->link, $catid);
+
+        if(empty($catName)){
+             $message = "<span class='error'>Category filed must not be empty!</span>";
+            return $message;
+    } else{
+     $query = "UPDATE tbl_category SET 
+       catName = '$catName' WHERE
+       catId = '$catid'";
+       $updated_row = $this->db->update($query);
+       if($updated_row ){
+        $message = "<span class='success'>Category Updated Successfully!</span>";
+        return $message;
+       } else{
+        $message = "<span class='success'>Something went wrong</span>";
+        return $message;
+       }
+    }
+}
  }
 ?>

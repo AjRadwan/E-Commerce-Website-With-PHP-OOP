@@ -13,11 +13,11 @@ if(!isset($_GET['catid']) || $_GET['catid'] == NULL){
 //create a  category object from category classes
 $cat = new Category();
 
-// if($_SERVER['REQUEST_METHOD'] == 'POST'){ 
-//     $catName = ($_POST['catName']);
+if($_SERVER['REQUEST_METHOD'] == 'POST'){ 
+    $catName = ($_POST['catName']);
 
-//     $insertCategory = $cat->catInsert($catName);
-//  }
+    $updateCategory = $cat->UpdateCategory($catName, $catid);
+ }
 ?>
 
 <div class="grid_10">
@@ -25,8 +25,8 @@ $cat = new Category();
     <h2>Add New Category</h2>
     <div class="block copyblock"> 
       <?php
-        if(isset($insertCategory)){
-            echo $insertCategory;
+        if(isset($updateCategory)){
+            echo $updateCategory;
         }
 
         //creating  a new method for getting catID
