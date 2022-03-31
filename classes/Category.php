@@ -38,5 +38,12 @@
         $result = $this->db->select($query);
         return $result;
     }
+
+
+    public function getCatById($catid){
+       $query = "SELECT * FROM tbl_category WHERE catId = '$catid'";
+       $result = $this->db->select($query);
+       return $result;
+    }
  }
 ?>

@@ -1,7 +1,6 @@
 ﻿<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
 
-
 <?php include '../classes/Category.php';
 //create a  category object from category classes
 $cat = new Category();
@@ -31,7 +30,8 @@ $cat = new Category();
  	<tr class="even gradeC">
 			<td><?php echo $i;?></td>
 			<td><?php echo $result['catName'];?></td> </td>
-			<td><a href="">Edit</a> || <a href="">Delete</a></td>
+			<td><a href="catEdit.php?catid=<?php echo $result['catId'];?>">Edit</a> ||
+			 <a onclick="return confirm('Do you want to delete this?')" href="">Delete</a></td>
 		</tr>
 		<?php } }?>
 	</tbody>
@@ -40,16 +40,12 @@ $cat = new Category();
 </div>
 </div>
 
-
 <script type="text/javascript">
 
 $(document).ready(function () {
 setupLeftMenu();
-
 $('.datatable').dataTable();
 setSidebarHeight();
-
-
 });
 </script>
 <?php include 'inc/footer.php'?>
