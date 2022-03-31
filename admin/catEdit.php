@@ -9,7 +9,6 @@ if(!isset($_GET['catid']) || $_GET['catid'] == NULL){
  $catid = $_GET['catid'];
 }
 
-
 //create a  category object from category classes
 $cat = new Category();
 
@@ -38,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         <table class="form">					
             <tr>
                 <td>
-                    <input type="text" name="catName" placeholder="Enter Category Name..." class="medium" value="<?php echo $result['catName']?>"/>
+                    <input type="text" name="catName" class="medium" value="<?php echo $result['catName']?>"/>
                 </td>
             </tr>
             <tr> 

@@ -25,7 +25,7 @@
              $message = "<span class='success'>Category Inserted Successfully!</span>";
              return $message;
          }else{
-            $message = "<span class='success'>Something went wrong</span>";
+            $message = "<span class='error'>Something went wrong</span>";
             return $message;   
          }
      }
@@ -63,10 +63,23 @@
         $message = "<span class='success'>Category Updated Successfully!</span>";
         return $message;
        } else{
-        $message = "<span class='success'>Something went wrong</span>";
+        $message = "<span class='error'>Something went wrong</span>";
         return $message;
        }
     }
 }
+
+    public function DeleteCategory($delCat){
+        $delCat = mysqli_real_escape_string($this->db->link, $delCat);
+       $query = "DELETE FROM tbl_category WHERE catId = $delCat";
+        $delData = $this->db->delete($query);
+        if($delData){
+            $message = "<span class='success'>Category Delete Successfully!</span>";
+        return $message;
+       } else{
+        $message = "<span class='error'>Something went wrong</span>";
+        return $message;
+       }
+        }
  }
 ?>

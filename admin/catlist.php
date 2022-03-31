@@ -5,12 +5,26 @@
 //create a  category object from category classes
 $cat = new Category();
 
+
+//delete Category Function
+if(isset($_GET['delCat'])){
+     $delCat = $_GET['delCat'];
+
+	 $deleteCategory = $cat->DeleteCategory($delCat);
+}
 ?>
 
 <div class="grid_10">
 <div class="box round first grid">
 <h2>Category List</h2>
-<div class="block">        
+<div class="block">    
+	
+		<?php
+		//showing delete Message
+		if(isset($deleteCategory)){
+            echo $deleteCategory;
+        }  
+		?>  
 	<table class="data display datatable" id="example">
 	<thead>
 		<tr>
@@ -31,7 +45,8 @@ $cat = new Category();
 			<td><?php echo $i;?></td>
 			<td><?php echo $result['catName'];?></td> </td>
 			<td><a href="catEdit.php?catid=<?php echo $result['catId'];?>">Edit</a> ||
-			 <a onclick="return confirm('Do you want to delete this?')" href="">Delete</a></td>
+			 <a onclick="return confirm('Do you want to delete this?')" 
+			 href="?delCat=<?php echo $result['catId'];?>">Delete</a></td>
 		</tr>
 		<?php } }?>
 	</tbody>
